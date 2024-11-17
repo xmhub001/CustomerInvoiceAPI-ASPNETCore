@@ -28,6 +28,8 @@ namespace ASPNETCoreInvoice
 
             //AddScoped
             builder.Services.AddScoped<IInvoiceRepository, InvoiceRepository>();
+            builder.Services.AddScoped<IRepository<Customer>, CustomerRepository>();
+            builder.Services.AddScoped<IRepository<Vehicle>, VehicleRepository>();
 
             //AddControllers
             builder.Services.AddControllers();

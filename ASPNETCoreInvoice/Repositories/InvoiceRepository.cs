@@ -41,9 +41,10 @@ namespace ASPNETCoreInvoice.Repositories
             //return Task.FromResult(invoice);
         }
 
-        public Task UpdateInvoiceAsync(Invoice invoice)
+        public async Task UpdateInvoiceAsync(Invoice invoice)
         {
-            throw new NotImplementedException();
+            _context.Invoices.Update(invoice);
+            await _context.SaveChangesAsync(true);
         }
     }
 }
