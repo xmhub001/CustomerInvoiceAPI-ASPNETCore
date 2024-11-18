@@ -10,14 +10,14 @@ namespace ASPNETCoreInvoice.Repositories
         {
             _context = context;
         }
-        async Task IRepository<Vehicle>.AddAsync(Vehicle vehicle)
+        public async Task AddAsync(Vehicle vehicle)
         {
             if (vehicle == null) throw new ArgumentNullException(nameof(vehicle));
             await _context.Vehicles.AddAsync(vehicle);
             _context.SaveChanges();
         }
 
-        async Task IRepository<Vehicle>.DeleteAsync(int Id)
+        public async Task DeleteAsync(int Id)
         {
             var vehicle = await _context.FindAsync<Vehicle>(Id);
             if (vehicle != null)
@@ -27,17 +27,17 @@ namespace ASPNETCoreInvoice.Repositories
             }
         }
 
-        async Task<IEnumerable<Vehicle>> IRepository<Vehicle>.GetAllAsync()
+        public async Task<IEnumerable<Vehicle>> GetAllAsync()
         {
             return await _context.Vehicles.ToListAsync<Vehicle>();
         }
 
-        async Task<Vehicle?> IRepository<Vehicle>.GetByIdAsync(int Id)
+        public async Task<Vehicle?> GetByIdAsync(int Id)
         {
             return await _context.Vehicles.FindAsync(Id);
         }
 
-        async Task IRepository<Vehicle>.UpdateAsync(Vehicle vehicle)
+        public async Task UpdateAsync(Vehicle vehicle)
         {
             _context.Vehicles.Update(vehicle);
             await _context.SaveChangesAsync(true);

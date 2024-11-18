@@ -22,9 +22,9 @@ namespace ASPNETCoreInvoice.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<Invoice>>> GetInvoiceById(int Id)
+        public async Task<ActionResult<IEnumerable<Invoice>>> GetInvoiceById(int id)
         {
-            var invoice = await _invoiceRepository.GetInvoiceByIdAsync(Id);
+            var invoice = await _invoiceRepository.GetInvoiceByIdAsync(id);
             if (invoice == null) {
                 return NotFound();
             }
@@ -50,9 +50,9 @@ namespace ASPNETCoreInvoice.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<Invoice>> UpdateInvoiceAsync(int Id, Invoice invoice)
+        public async Task<ActionResult<Invoice>> UpdateInvoiceAsync(int id, Invoice invoice)
         {
-            if (Id != invoice.Id) { 
+            if (id != invoice.Id) { 
                 return BadRequest();
             }
             if (ModelState.IsValid == false)

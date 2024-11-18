@@ -10,14 +10,14 @@ namespace ASPNETCoreInvoice.Repositories
         {
             _context = context;
         }
-        async Task IRepository<Customer>.AddAsync(Customer customer)
+        public async Task AddAsync(Customer customer)
         {
             if (customer == null) throw new ArgumentNullException(nameof(customer));
             await _context.Customers.AddAsync(customer);
             _context.SaveChanges();
         }
 
-        async Task IRepository<Customer>.DeleteAsync(int Id)
+        public async Task DeleteAsync(int Id)
         {
             var customer = await _context.FindAsync<Customer>(Id);
             if (customer != null)
@@ -27,17 +27,17 @@ namespace ASPNETCoreInvoice.Repositories
             }
         }
 
-        async Task<IEnumerable<Customer>> IRepository<Customer>.GetAllAsync()
+        public async Task<IEnumerable<Customer>> GetAllAsync()
         {
             return await _context.Customers.ToListAsync<Customer>();
         }
 
-        async Task<Customer?> IRepository<Customer>.GetByIdAsync(int Id)
+        public async Task<Customer?> GetByIdAsync(int Id)
         {
             return await _context.Customers.FindAsync(Id);
         }
 
-        async Task IRepository<Customer>.UpdateAsync(Customer customer)
+        public async Task UpdateAsync(Customer customer)
         {
             _context.Customers.Update(customer);
             await _context.SaveChangesAsync(true);

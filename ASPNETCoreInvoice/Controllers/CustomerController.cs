@@ -9,9 +9,11 @@ namespace ASPNETCoreInvoice.Controllers
     public class CustomerController : ControllerBase
     {
         private readonly IRepository<Customer> _customerRepository;
-        public CustomerController(IRepository<Customer> customerRepository)
+        private CustomerDbContext _context;
+        public CustomerController(IRepository<Customer> customerRepository, CustomerDbContext context)
         {
             _customerRepository = customerRepository;
+            _context = context; 
         }
 
         [HttpGet]
@@ -63,6 +65,7 @@ namespace ASPNETCoreInvoice.Controllers
                 return BadRequest(ModelState);
             }
             await _customerRepository.UpdateAsync(customer);
+            _customerRepository.ToString();
             //return Ok(Customer);
             return CreatedAtAction(nameof(GetCustomerById), new { id = customer.Id }, customer);
         }
