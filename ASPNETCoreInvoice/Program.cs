@@ -17,14 +17,14 @@ namespace ASPNETCoreInvoice
                 );
 
             //AddCors - For Angular
-            //builder.Services.AddCors(options =>
-            //    options.AddPolicy("MyCors", builder =>
-            //    {
-            //        builder.WithOrigins("http_//localhost:4200") //localhost:7086
-            //        .AllowAnyMethod()
-            //        .AllowAnyHeader();
-            //    })
-            //); 
+            builder.Services.AddCors(options =>
+                options.AddPolicy("MyCors", builder =>
+                {
+                    builder.WithOrigins("http://localhost:4200") //localhost:7086
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+                })
+            );
 
             //AddScoped
             builder.Services.AddScoped<IInvoiceRepository, InvoiceRepository>();
@@ -53,6 +53,7 @@ namespace ASPNETCoreInvoice
             }
 
             //UseCors
+            app.UseCors("MyCors");
 
             // Use MapControllers instead
             //app.MapGet("/", () => "Hello World!");

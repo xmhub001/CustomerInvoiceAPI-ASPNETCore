@@ -3,7 +3,7 @@
     public class Vehicle
     {
         public int Id { get; set; }
-        public string? VIN { get; set; }
+        public required string? VIN { get; set; }
         public string? LicensePlate { get; set; }
         public string? LicenseState { get; set; }
         public string? Model { get; set; }

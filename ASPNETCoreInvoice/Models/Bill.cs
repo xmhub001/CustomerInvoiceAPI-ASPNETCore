@@ -3,7 +3,7 @@
     public class Bill
     {
         public int Id { get; set; }
-        public string? BillCycle { get; set; }
+        public required string? BillCycle { get; set; }
         public double[]? BillInvoiceId { get; set; }
         public DateOnly BillDate { get; set; }
 
