@@ -1,5 +1,8 @@
 ﻿
 /*
+project type: ASP.NET Core MVC Empty project.
+.NET 8 LTS
+
 When a Customer rents a Vehicle an Invoice is created. 
 A Bill then goes out periodically for one or more Invoices, 
 until all Invoices for that Customer are paid in full.

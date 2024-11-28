@@ -46,10 +46,10 @@ namespace ASPNETCoreInvoice.Controllers
             return CreatedAtAction(nameof(GetCustomerById), new { id = customer.Id }, customer);
         }
 
-        [HttpDelete]
-        public async Task<ActionResult> DeleteCustomerById(int Id)
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteCustomerById(int id)
         {
-            await _customerRepository.DeleteAsync(Id);
+            await _customerRepository.DeleteAsync(id);
             return NoContent();
         }
 
